@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/day"
+        android:scaleType="centerCrop"/>
+
+    <ProgressBar
+        android:id="@+id/pbProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clWeatherlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tvHeaderCityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="City Name"
+            android:fontFamily="@font/ic_poppins_medium"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="35dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+            <RelativeLayout
+                android:id="@+id/rlSearchBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flow_verticalAlign="center"
+                app:flow_horizontalAlign="center"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderCityName"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <EditText
+                    android:id="@+id/edtSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:background="@drawable/edt_rd_input"
+                    android:hint="Enter City Name"
+                    android:layout_marginHorizontal="10dp"
+                    android:imeOptions="actionDone"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:padding="12dp"
+                    android:layout_toLeftOf="@+id/ivSearchIcon"
+                    android:layout_alignParentLeft="true" />
+
+                <ImageView
+                    android:id="@+id/ivSearchIcon"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignTop="@+id/edtSearch"
+                    android:layout_alignBottom="@+id/edtSearch"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginHorizontal="10dp"
+                    android:src="@drawable/ic_search" />
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlConditionBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/rlSearchBox"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/dummyView">
+
+            <TextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23"
+                android:padding="10dp"
+                android:fontFamily="@font/ic_poppins_medium"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="62sp"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/ivWeatherImg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_below="@+id/tvTemp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/tvCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:text="Condition"
+                android:background="@drawable/edt_rd_input"
+                android:fontFamily="@font/ic_poppins_medium"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_marginBottom="15dp"
+                android:textSize="15sp"
+                android:layout_below="@+id/ivWeatherImg"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvWeatherDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:text="Weather Report"
+            android:fontFamily="@font/ic_poppins_medium"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/rvItems"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItems"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginVertical="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="4"
+            android:orientation="horizontal"
+            tools:listitem="@layout/weather_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
